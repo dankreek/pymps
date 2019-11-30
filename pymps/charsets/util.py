@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
 
-def tuplize_char(char_data: List[str], width: int = 6, height:int = 7) -> Tuple[Tuple[bool]]:
+def tuplize_char(char_data: List[str], width: int = 6, height: int = 7) -> Tuple[Tuple[bool]]:
     """ Create tuples defining lines of a bitmap character.
 
     Given a list of strings which represent a bitmap character, return a list of tuples which contain the full
@@ -37,4 +37,47 @@ def tuplize_char(char_data: List[str], width: int = 6, height:int = 7) -> Tuple[
 
     return tuple(line_tuples)
 
+
+def tuplize_col(char_line_data: List[List[str]], line_len=16, char_width=6, char_height=7) -> Tuple[Tuple[Tuple[bool]]]:
+    """ Tuplize a list of character data.
+
+    If the provided list is shorter than `line_len` then the remaining characters in the output Tuple will all be blank.
+
+    :param char_line_data:
+    :param int line_len:
+    :param int char_width: output width of each character
+    :param int char_height: output height of each character
+    :return: A Tuple containing tuplized characters
+    """
+    assert len(char_line_data) <= line_len
+
+    line_char_tuples = []
+    for i in range(line_len):
+        try:
+            char_tuple = tuplize_char(char_line_data[i], char_width, char_height)
+        except IndexError:
+            char_tuple = tuplize_char([], char_width, char_height)
+
+        line_char_tuples.append(char_tuple)
+
+    return tuple(line_char_tuples)
+
+
+def tuplize_charset(char_lines: List[List[List[str]]], line_len=16, char_width=6, char_height=7) -> Tuple[Tuple[Tuple[bool]]]:
+    """ Given a list of lists of character data, tuplize it into an entire character set.
+
+    The output of this function is intended to be an entire character set, usually 256 characters long.
+
+    :param char_lines: List-of-lists of character data, generally one list per 16 character row in the character set diagram
+    :param int line_len: Length of each column of character data, generally 16 characters
+    :param int char_width: output width of each character
+    :param int char_height: output height of each character
+    :return: Tuple containing the entire character set for a printer, generally 256 characters.
+    """
+    char_data = tuple()
+
+    for char_line in char_lines:
+        char_data += tuplize_col(char_line, line_len, char_width, char_height)
+
+    return char_data
 

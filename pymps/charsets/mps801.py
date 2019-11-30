@@ -1,3 +1,5 @@
+from .util import tuplize_charset
+
 SPACE = []
 
 BANG = [
@@ -231,7 +233,7 @@ EIGHT = [
 NINE = [
     ' ###',
     '#   #',
-    '#   #'
+    '#   #',
     ' ####',
     '    #',
     '   #',
@@ -290,7 +292,7 @@ QUESTION = [
     '    #',
     '   #',
     '  #',
-    ''
+    '',
     '  #'
 ]
 
@@ -367,7 +369,7 @@ UPPER_F = [
 UPPER_G = [
     ' ###',
     '#   #',
-    '#'
+    '#',
     '#  ##',
     '#   #',
     '#   #',
@@ -488,7 +490,7 @@ UPPER_S = [
     ' ###',
     '#   #',
     '#',
-    ' ###'
+    ' ###',
     '    #',
     '#   #',
     ' ###'
@@ -576,7 +578,7 @@ LEFT_BRACKET = [
 
 POUND = [
     '  ##',
-    ' #  #'
+    ' #  #',
     ' #',
     '###',
     ' #',
@@ -817,7 +819,7 @@ CIRCLE_OPEN = [
 ]
 
 CLUB = [
-    '  #'
+    '  #',
     ' ###',
     '# # #',
     '#####',
@@ -1031,7 +1033,7 @@ TLINE_LEFT = [
     '   #',
     '####',
     '   #',
-    '   #'
+    '   #',
     '   #'
 ]
 
@@ -1237,7 +1239,7 @@ LOWER_L = [
 
 LOWER_M = [
     '',
-    ''
+    '',
     '## #',
     '# # #',
     '# # #',
@@ -1479,7 +1481,7 @@ US_UK_COL_2 = [
     SLASH
 ]
 
-US_UK_COL3 = [
+US_UK_COL_3 = [
     ZERO,
     ONE,
     TWO,
@@ -1745,3 +1747,40 @@ US_UK_BUSINESS_COL_F = [
     CROSS_THICK
 ]
 
+US_UK_GRAPHIC_MODE = tuplize_charset([
+    [],
+    [],
+    US_UK_COL_2,
+    US_UK_COL_3,
+    US_UK_GRAPHICS_COL_4,
+    US_UK_GRAPHICS_COL_5,
+    US_UK_GRAPHICS_COL_6,
+    US_UK_GRAPHICS_COL_7,
+    [],
+    [],
+    US_UK_GRAPHICS_COL_A,
+    US_UK_GRAPHICS_COL_B,
+    US_UK_GRAPHICS_COL_6,
+    US_UK_GRAPHICS_COL_7,
+    US_UK_GRAPHICS_COL_A,
+    US_UK_GRAPHICS_COL_B
+])
+
+US_UK_BUSINESS_MODE = tuplize_charset([
+    [],
+    [],
+    US_UK_COL_2,
+    US_UK_COL_3,
+    US_UK_BUSINESS_COL_4,
+    US_UK_BUSINESS_COL_5,
+    US_UK_BUSINESS_COL_6,
+    US_UK_BUSINESS_COL_7,
+    [],
+    [],
+    US_UK_BUSINESS_COL_A,
+    US_UK_BUSINESS_COL_B,
+    US_UK_BUSINESS_COL_6,
+    US_UK_BUSINESS_COL_7,
+    US_UK_BUSINESS_COL_A,
+    US_UK_BUSINESS_COL_B
+])
